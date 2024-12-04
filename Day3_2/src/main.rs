@@ -1,12 +1,14 @@
-use std::fs;
 use regex::{Regex, RegexBuilder};
+use std::fs;
 
 fn main() {
     let file = fs::read_to_string("input.txt").unwrap();
 
-
     let re1 = Regex::new(r"mul\(([0-9]+),([0-9]+)\)").unwrap();
-    let re2 = RegexBuilder::new(r"don't\(\).*?do\(\)|don't\(\).*?$").dot_matches_new_line(true).build().unwrap();
+    let re2 = RegexBuilder::new(r"don't\(\).*?do\(\)|don't\(\).*?$")
+        .dot_matches_new_line(true)
+        .build()
+        .unwrap();
 
     let file = re2.replace_all(&file, "foobar");
 
@@ -21,5 +23,4 @@ fn main() {
         sum += a * b;
     }
     println!("sum : {}", sum);
-
 }

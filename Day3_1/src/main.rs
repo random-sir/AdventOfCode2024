@@ -1,5 +1,5 @@
-use std::fs;
 use regex::Regex;
+use std::fs;
 
 fn main() {
     let file = fs::read_to_string("input.txt").unwrap();
@@ -18,5 +18,4 @@ fn main() {
         sum += a * b;
     }
     println!("sum : {}", sum);
-
 }

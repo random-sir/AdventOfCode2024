@@ -5,8 +5,8 @@ fn main() {
     println!("{}", file);
 
     let lines = file.lines();
-    let mut left:Vec<i32> = Vec::new();
-    let mut right:Vec<i32> = Vec::new();
+    let mut left: Vec<i32> = Vec::new();
+    let mut right: Vec<i32> = Vec::new();
 
     for line in lines {
         let mut elements: Vec<_> = line.split("   ").collect();
