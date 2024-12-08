@@ -1,14 +1,6 @@
 use itertools::{repeat_n, Itertools};
 use std::fs;
 
-fn sum(a: u128, b: u128) -> u128 {
-    a + b
-}
-
-fn product(a: u128, b: u128) -> u128 {
-    a * b
-}
-
 fn main() {
     let file = fs::read_to_string("input.txt").unwrap();
 
@@ -30,11 +22,8 @@ fn main() {
 
     let mut total: u128 = 0;
     'outer: for (result, elements) in results.into_iter().zip_eq(operands_list) {
-        let combs = repeat_n(
-            vec![|a, b| sum(a, b), |a, b| product(a, b)],
-            elements.len() - 1,
-        )
-        .multi_cartesian_product();
+        let combs = repeat_n(vec![|a, b| a + b, |a, b| a * b], elements.len() - 1)
+            .multi_cartesian_product();
 
         for comb in combs {
             let mut elements = elements.clone().into_iter();
