@@ -46,22 +46,19 @@ fn main() {
 
         let last = disk[current_checked];
         let occupied_space = last.0;
-        let id = last.1;
 
         for current_free in list {
             let free_space = disk[current_free].0;
-            if id != -1 {
-                if free_space > occupied_space {
-                    disk[current_free].0 = free_space - occupied_space;
-                    disk.insert(current_free, last);
-                    disk[current_checked + 1] = (occupied_space, -1);
-                    break;
-                } else if free_space == occupied_space {
-                    let temp = disk[current_free];
-                    disk[current_free] = last;
-                    disk[current_checked] = temp;
-                    break;
-                }
+            if free_space > occupied_space {
+                disk[current_free].0 = free_space - occupied_space;
+                disk.insert(current_free, last);
+                disk[current_checked + 1] = (occupied_space, -1);
+                break;
+            } else if free_space == occupied_space {
+                let temp = disk[current_free];
+                disk[current_free] = last;
+                disk[current_checked] = temp;
+                break;
             }
         }
     }
